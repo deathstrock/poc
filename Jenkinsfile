@@ -1,18 +1,19 @@
 pipeline{
     environment {
-        registry = "deathstrock47/$REPO" 
+        registry = "deathstrock47/production" 
         dockerImage = ""
         registryCredential = "dockerhub"
         gitCredentials = "gitCreds"
     }
-
     agent any
     stages{
         stage('checkout'){
-            git (
-                url: 'deathstrock/myrepo',
-                credentialsId: 'gitCreds'
-            )
+            steps{
+                git (
+                    url: 'deathstrock/myrepo',
+                    credentialsId: 'gitCreds'
+                )
+            }
         }
         stage('build docker image'){
             steps{
