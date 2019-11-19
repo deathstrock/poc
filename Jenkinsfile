@@ -8,10 +8,7 @@ pipeline{
     stages{
         stage('checkout'){
             steps{
-                git (
-                    url: 'deathstrock/myrepo',
-                    credentialsId: 'gitCreds'
-                )
+                git ('https://github.com/deathstrock/poc.git')
             }
         }
         stage('build docker image'){
