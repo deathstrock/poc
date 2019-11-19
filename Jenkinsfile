@@ -3,7 +3,6 @@ pipeline{
         registry = "deathstrock47/production" 
         dockerImage = ""
         registryCredential = "dockerhub"
-        gitCredentials = "gitCreds"
     }
     agent any
     stages{
