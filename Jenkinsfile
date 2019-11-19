@@ -21,8 +21,9 @@ pipeline{
         stage('push docker image'){
             steps{
                 script{
-                    docker.withRegistry("deathstrock47/production", registryCredential)
-                    dockerImage.push()
+                    docker.withRegistry("", registryCredential){
+                   	 dockerImage.push()
+		    }
                 }
             }
         }
