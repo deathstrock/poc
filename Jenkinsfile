@@ -17,14 +17,18 @@ pipeline{
         }
         stage('build docker image'){
             steps{
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                echo "$registry":"$BUILD_NUMBER"
+                script{
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    echo "$registry":"$BUILD_NUMBER"
+                }
             }
         }
         stage('push docker image'){
             steps{
-                docker.withRegistry("", registryCredential)
-                dockerImage.push()
+                script{
+                    docker.withRegistry("", registryCredential)
+                    dockerImage.push()
+                }
             }
         }
     }
